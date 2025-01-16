@@ -1,0 +1,46 @@
+# Site-Informationen
+title: "alessiavalentina.ch | Aspiring Swiss Figure Skater 🇨🇭"
+description: "Alessia Valentina ist eine aufstrebende Schweizer Eiskunstläuferin. Erfahre mehr über ihre Erfolge, Sponsoringmöglichkeiten und kontaktiere sie direkt."
+url: "https://www.alessiavalentina.ch" # Deine Website-URL
+baseurl: "" # Falls deine Seite in einem Unterverzeichnis liegt, z.B. "/blog"
+
+# Sprach- und Lokalisierungseinstellungen
+language: "de"
+locale: "de_DE"
+
+# Plugins (optional, falls du SEO-Plugins verwenden möchtest)
+plugins:
+  - jekyll-seo-tag
+
+# Weitere Einstellungen
+markdown: kramdown
+theme: minima
+
+# Navigation
+navigation:
+  - name: "Aktiv"
+    link: "#"
+    icon: "bi-star-fill"
+    aria_label: "Aktiv"
+  - name: "Home"
+    link: "#welcome"
+    icon: "bi-info-circle-fill"
+    aria_label: "Home"
+  - name: "Sponsoring"
+    link: "#sponsoring"
+    icon: "bi-house-fill"
+    aria_label: "Sponsoring"
+  - name: "Galerie"
+    link: "#gallery"
+    icon: "bi-images"
+    aria_label: "Galerie"
+  - name: "Kontakt"
+    link: "#contact"
+    icon: "bi-envelope-fill"
+    aria_label: "Kontakt"
+
+# Assets
+assets:
+  css: "https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/lux/bootstrap.min.css"
+  icons: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+  js: "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
