@@ -1,15 +1,17 @@
 # Site-Informationen
-title: "alessiavalentina.ch | Aspiring Swiss Figure Skater 🇨🇭"
-description: "Alessia Valentina ist eine aufstrebende Schweizer Eiskunstläuferin. Erfahre mehr über ihre Erfolge, Sponsoringmöglichkeiten und kontaktiere sie direkt."
+title: "Alessia Valentina – Schweizer Eiskunstläuferin | Offizielle Website"
+description: "Offizielle Website von Alessia Valentina: Erfolge im Eiskunstlauf, Sponsoring-Möglichkeiten und Kontakt."
 url: "https://alessiavalentina.ch" # Deine Website-URL
 baseurl: "" # Falls deine Seite in einem Unterverzeichnis liegt, z.B. "/blog"
 
 # Sprach- und Lokalisierungseinstellungen
-language: "de"
-locale: "de_DE"
+language: "de-CH"
+locale: "de_CH"
 
 # Plugins (optional, falls du SEO-Plugins verwenden möchtest)
 plugins:
+  - jekyll-feed
+  - jekyll-sitemap
   - jekyll-seo-tag
 
 # Weitere Einstellungen
