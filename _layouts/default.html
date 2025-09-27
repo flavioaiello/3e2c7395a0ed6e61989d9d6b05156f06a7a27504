@@ -25,7 +25,7 @@
 
     main {
       position: relative;
-      margin-top: 15vh;
+      margin-top: 30vh;
       margin-bottom: 15vh;
     }
 
@@ -132,7 +132,7 @@
         document.body.classList.add('scrolling');
         clearTimeout(timer);
         // etwas längere Ruhezeit für sanftes Zurückblenden
-        timer = setTimeout(() => document.body.classList.remove('scrolling'), 280);
+        timer = setTimeout(() => document.body.classList.remove('scrolling'), 150);
       };
 
       // Scroll-Events (passive für Performance)
