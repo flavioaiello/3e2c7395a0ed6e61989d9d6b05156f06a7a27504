@@ -2,132 +2,151 @@
 <html lang="{{ site.language }}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | escape }} | {{ site.title }}</title>
-    <meta name="description" content="{{ page.description | default: site.description }}">
-    <link rel="stylesheet" href="{{ site.assets.css }}" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{ site.assets.icons }}" crossorigin="anonymous">
-    {% seo %}
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | escape }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="stylesheet" href="{{ site.assets.css }}" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{{ site.assets.icons }}" crossorigin="anonymous">
+  {% seo %}
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
 
-        body {
-            overflow-x: hidden;
-        }
+    body {
+      overflow-x: hidden;
+    }
 
-        img {
-            opacity: 0;
-            animation: fadeIn 2s ease forwards;
-        }
+    img {
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
 
-        main {
-            position: relative;
-            margin-top: 15vh;
-            margin-bottom: 15vh;
-        }
+    main {
+      position: relative;
+      margin-top: 15vh;
+      margin-bottom: 15vh;
+    }
 
-        section {
-            scroll-snap-align: start;
-        }
+    section {
+      scroll-snap-align: start;
+    }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
 
-        .down {
-          animation: bounce 2s infinite;
-        }
+    .down {
+      animation: bounce 2s infinite;
+    }
 
-        @keyframes bounce {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(10px);
-          }
-        }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(10px);
+      }
+    }
 
-        main.container,
-        section.bg-white {
-          transition: background-color 200ms ease, box-shadow 200ms ease, backdrop-filter 200ms ease;
-        }
-        
-        main.container {
-          background: rgba(255, 255, 255, 0.92);
-          backdrop-filter: blur(6px);
-        }
-        
-        section.bg-white {
-          background-color: rgba(255, 255, 255, 1) !important;
-        }
-        
-        body.scrolling main.container {
-          background: rgba(255, 255, 255, 0.15);
-          box-shadow: none !important;
-          backdrop-filter: blur(0);
-        }
-        
-        body.scrolling section.bg-white {
-          background-color: transparent !important;
-          box-shadow: none !important;
-        }
+    /* === NEU: sanftes, globales Fading beim Scrollen === */
+    :root {
+      --content-idle-opacity: 1;
+      --content-scroll-opacity: 0.2; /* 80% Transparenz */
+      --content-transition: 600ms cubic-bezier(.22, .61, .36, 1); /* sanfter Ease */
+    }
 
-    </style>
+    /* Übergänge und Performance-Optimierung */
+    main.container,
+    section.bg-white {
+      transition:
+        opacity var(--content-transition),
+        background-color var(--content-transition),
+        box-shadow var(--content-transition),
+        backdrop-filter var(--content-transition);
+      will-change: opacity, background-color, box-shadow, backdrop-filter;
+    }
+
+    /* Standard-Zustand */
+    main.container {
+      opacity: var(--content-idle-opacity);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
+    }
+
+    section.bg-white {
+      opacity: var(--content-idle-opacity);
+      background-color: rgba(255, 255, 255, 1) !important;
+    }
+
+    /* Beim Scrollen wird alles abgedunkelt */
+    body.scrolling main.container {
+      opacity: var(--content-scroll-opacity);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: none !important;
+      backdrop-filter: blur(0);
+    }
+
+    body.scrolling section.bg-white {
+      opacity: var(--content-scroll-opacity);
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+  </style>
 </head>
 
 <body>
-    <header id="carouselIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner position-fixed top-0 start-0 vw-100 vh-100 object-fit-cover">
-            <div class="carousel-item active">
-                <img src="/assets/images/1.jpg" class="d-block vw-100 vh-100 object-fit-cover" alt="Background-Image">
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/images/2.jpg" class="d-block vw-100 vh-100 object-fit-cover" alt="Background-Image">
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/images/4.jpg" class="d-block vw-100 vh-100 object-fit-cover" alt="Background-Image">
-            </div>
-        </div>
-    </header>
+  <header id="carouselIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner position-fixed top-0 start-0 vw-100 vh-100 object-fit-cover">
+      <div class="carousel-item active">
+        <img src="/assets/images/1.jpg" class="d-block vw-100 vh-100 object-fit-cover" alt="Background-Image">
+      </div>
+      <div class="carousel-item">
+        <img src="/assets/images/2.jpg" class="d-block vw-100 vh-100 object-fit-cover" alt="Background-Image">
+      </div>
+      <div class="carousel-item">
+        <img src="/assets/images/4.jpg" class="d-block vw-100 vh-100 object-fit-cover" alt="Background-Image">
+      </div>
+    </div>
+  </header>
 
-    <main class="container shadow p-0">     
-        {{ content }}
-    </main>
-    <script src="{{ site.assets.js }}" crossorigin="anonymous"></script>
-    <script>
-      
-      (function () {
-        let timer = null;
-        const setScrolling = () => {
-          document.body.classList.add('scrolling');
-          clearTimeout(timer);
-          timer = setTimeout(() => document.body.classList.remove('scrolling'), 180);
-        };
-    
-        // Reagiere auf Scrollen (Maus, Touch, Tastatur)
-        window.addEventListener('scroll', setScrolling, { passive: true });
-        window.addEventListener('wheel', setScrolling, { passive: true });
-        window.addEventListener('touchmove', setScrolling, { passive: true });
-        window.addEventListener('keydown', (e) => {
-          const keys = ['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '];
-          if (keys.includes(e.key)) setScrolling();
-        });
-      })();
-    </script>
+  <main class="container shadow p-0">
+    {{ content }}
+  </main>
 
+  <script src="{{ site.assets.js }}" crossorigin="anonymous"></script>
+  <script>
+    (function () {
+      let timer = null;
+
+      const setScrolling = () => {
+        document.body.classList.add('scrolling');
+        clearTimeout(timer);
+        // etwas längere Ruhezeit für sanftes Zurückblenden
+        timer = setTimeout(() => document.body.classList.remove('scrolling'), 280);
+      };
+
+      // Scroll-Events (passive für Performance)
+      window.addEventListener('scroll', setScrolling, { passive: true });
+      window.addEventListener('wheel', setScrolling, { passive: true });
+      window.addEventListener('touchmove', setScrolling, { passive: true });
+
+      // Auch Tastatur-Scroll-Events berücksichtigen
+      window.addEventListener('keydown', (e) => {
+        const keys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
+        if (keys.includes(e.key)) setScrolling();
+      });
+    })();
+  </script>
 </body>
 
 </html>
