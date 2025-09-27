@@ -121,6 +121,28 @@
         {{ content }}
     </main>
     <script src="{{ site.assets.js }}" crossorigin="anonymous"></script>
+    <script>
+      
+      (function () {
+        let timer = null;
+        const setScrolling = () => {
+          document.body.classList.add('scrolling');
+          clearTimeout(timer);
+          timer = setTimeout(() => document.body.classList.remove('scrolling'), 180);
+        };
+    
+        // Reagiere auf Scrollen (Maus, Touch, Tastatur)
+        window.addEventListener('scroll', setScrolling, { passive: true });
+        window.addEventListener('wheel', setScrolling, { passive: true });
+        window.addEventListener('touchmove', setScrolling, { passive: true });
+        window.addEventListener('keydown', (e) => {
+          // Pfeiltasten, Space, PageUp/Down, Home/End
+          const keys = ['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '];
+          if (keys.includes(e.key)) setScrolling();
+        });
+      })();
+    </script>
+
 </body>
 
 </html>
