@@ -51,6 +51,32 @@
             transform: translateY(10px);
           }
         }
+
+        main.container,
+        section.bg-white {
+          transition: background-color 200ms ease, box-shadow 200ms ease, backdrop-filter 200ms ease;
+        }
+        
+        main.container {
+          background: rgba(255, 255, 255, 0.92);
+          backdrop-filter: blur(6px);
+        }
+        
+        section.bg-white {
+          background-color: rgba(255, 255, 255, 1) !important;
+        }
+        
+        body.scrolling main.container {
+          background: rgba(255, 255, 255, 0.15);
+          box-shadow: none !important;
+          backdrop-filter: blur(0);
+        }
+        
+        body.scrolling section.bg-white {
+          background-color: transparent !important;
+          box-shadow: none !important;
+        }
+
     </style>
 </head>
 
