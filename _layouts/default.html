@@ -55,7 +55,7 @@
     :root {
       --content-idle-opacity: 1;
       --content-scroll-opacity: 0.5;
-      --content-transition: 400ms cubic-bezier(.22, .61, .36, 1); 
+      --content-transition: 900ms cubic-bezier(.22, .61, .36, 1);
     }
 
     /* Übergänge und Performance-Optimierung */
@@ -131,7 +131,7 @@
         document.body.classList.add('scrolling');
         clearTimeout(timer);
         // etwas längere Ruhezeit für sanftes Zurückblenden
-        timer = setTimeout(() => document.body.classList.remove('scrolling'), 150);
+        timer = setTimeout(() => document.body.classList.remove('scrolling'), 450);
       };
 
       // Scroll-Events (passive für Performance)
