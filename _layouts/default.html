@@ -44,59 +44,97 @@
     }
 
     @keyframes bounce {
-      0%, 100% {
+      0%,
+      100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(10px);
       }
     }
-    
-    main.container,
-    section.bg-white {
+
+    /* Content styling */
+    main.container {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
       transition:
-        opacity var(--content-transition),
-        background-color var(--content-transition),
-        box-shadow var(--content-transition),
-        backdrop-filter var(--content-transition);
+        opacity 900ms cubic-bezier(.22, .61, .36, 1),
+        background-color 900ms cubic-bezier(.22, .61, .36, 1),
+        box-shadow 900ms cubic-bezier(.22, .61, .36, 1),
+        backdrop-filter 900ms cubic-bezier(.22, .61, .36, 1);
       will-change: opacity, background-color, box-shadow, backdrop-filter;
     }
 
-    main.container {
-      opacity: var(--content-idle-opacity);
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(6px);
-    }
-
     section.bg-white {
-      opacity: var(--content-idle-opacity);
       background-color: rgba(255, 255, 255, 1) !important;
+      transition:
+        opacity 900ms cubic-bezier(.22, .61, .36, 1),
+        background-color 900ms cubic-bezier(.22, .61, .36, 1),
+        box-shadow 900ms cubic-bezier(.22, .61, .36, 1),
+        backdrop-filter 900ms cubic-bezier(.22, .61, .36, 1);
+      will-change: opacity, background-color, box-shadow, backdrop-filter;
     }
 
-    /* Beim Scrollen wird alles abgedunkelt */
-    body.scrolling main.container {
-      opacity: var(--content-scroll-opacity);
-      background: rgba(255, 255, 255, 0.15);
-      box-shadow: none !important;
-      backdrop-filter: blur(0);
+    /* Transparent always-visible hamburger at top right */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 1050;
+      padding: 1rem;
+      pointer-events: none; /* so clicks go only to the button */
     }
 
-    body.scrolling section.bg-white {
-      opacity: var(--content-scroll-opacity);
+    .top-nav .navbar {
       background-color: transparent !important;
-      box-shadow: none !important;
+      pointer-events: auto;
+    }
+
+    .top-nav .navbar-toggler {
+      border: none;
+    }
+
+    .top-nav .navbar-toggler:focus {
+      box-shadow: none;
+    }
+
+    .top-nav .navbar-toggler-icon {
+      filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.6));
+    }
+
+    .top-nav .navbar-collapse {
+      text-align: right;
+    }
+
+    .top-nav .navbar-nav .nav-link {
+      color: #ffffff;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .top-nav .navbar-nav .nav-link:hover {
+      color: #f8f9fa;
+    }
+
+    /* On larger screens, show the menu items inline to the left of the hamburger (still keep the burger visible) */
+    @media (min-width: 992px) {
+      .top-nav .navbar-collapse {
+        display: flex !important;
+        justify-content: flex-end;
+      }
     }
   </style>
 </head>
 
 <body>
-    <!-- Fixed top hamburger navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+  <!-- Transparent hamburger navigation fixed at top right -->
+  <div class="top-nav">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
         aria-controls="mainNavbar" aria-expanded="false" aria-label="Navigation umschalten">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
         <ul class="navbar-nav mb-2 mb-lg-0 gap-lg-3">
           <li class="nav-item">
@@ -113,8 +151,9 @@
           </li>
         </ul>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
+
   <header id="carouselIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
