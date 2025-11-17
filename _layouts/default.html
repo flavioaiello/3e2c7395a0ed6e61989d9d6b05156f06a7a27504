@@ -76,14 +76,15 @@
       will-change: opacity, background-color, box-shadow, backdrop-filter;
     }
 
-    /* Transparent always-visible navbar at top-right, content centered */
+    /* Transparent navbar fixed top-right, menu centered */
     .top-nav {
       position: fixed;
       top: 0;
       right: 0;
       z-index: 1050;
       padding: 1rem;
-      pointer-events: none;
+      pointer-events: none; /* only the nav itself is clickable */
+      width: 100%;          /* allow centering across full width */
     }
 
     .top-nav .navbar {
@@ -92,8 +93,10 @@
       padding: 0;
     }
 
+    /* Keep hamburger in top-right */
     .top-nav .navbar-toggler {
       border: none;
+      margin-left: auto;
     }
 
     .top-nav .navbar-toggler:focus {
@@ -104,9 +107,10 @@
       filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.6));
     }
 
+    /* Center menu items horizontally over the page */
     .top-nav .navbar-collapse {
-      text-align: center;
       justify-content: center !important;
+      text-align: center;
     }
 
     .top-nav .navbar-nav {
@@ -126,16 +130,16 @@
 </head>
 
 <body>
-  <!-- Transparent hamburger navigation fixed at top right, items centered -->
+  <!-- Transparent hamburger navigation fixed at top-right, centered menu -->
   <div class="top-nav">
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <!-- Hamburger stays at the far right -->
-      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+      <!-- Hamburger (always visible, top-right) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
         aria-controls="mainNavbar" aria-expanded="false" aria-label="Navigation umschalten">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Centered menu items -->
+      <!-- Menu centered horizontally when expanded -->
       <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
