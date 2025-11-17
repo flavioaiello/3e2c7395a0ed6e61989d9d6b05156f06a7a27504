@@ -10,97 +10,155 @@
   <link rel="stylesheet" href="{{ site.assets.icons }}" crossorigin="anonymous">
   {% seo %}
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+   html {
+            scroll-behavior: smooth;
+        }
 
-    body {
-      overflow-x: hidden;
-    }
+        body {
+            overflow-x: hidden;
+        }
 
-    img {
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
-    }
+        img {
+            opacity: 0;
+            animation: fadeIn 2s ease forwards;
+        }
 
-    main {
-      position: relative;
-      margin-top: 100vh;
-      margin-bottom: 15vh;
-    }
+        main {
+            position: relative;
+            margin-top: 65vh;
+            margin-bottom: 15vh;
+        }
 
-    section {
-      scroll-snap-align: start;
-    }
+        section {
+            scroll-snap-align: start;
+        }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
 
-    .down {
-      animation: bounce 2s infinite;
-    }
+        .down {
+          animation: bounce 2s infinite;
+        }
 
-    @keyframes bounce {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(10px);
-      }
-    }
-
-    /* Content styling */
-    main.container {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(6px);
-      transition:
-        opacity 900ms cubic-bezier(.22, .61, .36, 1),
-        background-color 900ms cubic-bezier(.22, .61, .36, 1),
-        box-shadow 900ms cubic-bezier(.22, .61, .36, 1),
-        backdrop-filter 900ms cubic-bezier(.22, .61, .36, 1);
-      will-change: opacity, background-color, box-shadow, backdrop-filter;
-    }
-
-    section.bg-white {
-      background-color: rgba(255, 255, 255, 1) !important;
-      transition:
-        opacity 900ms cubic-bezier(.22, .61, .36, 1),
-        background-color 900ms cubic-bezier(.22, .61, .36, 1),
-        box-shadow 900ms cubic-bezier(.22, .61, .36, 1),
-        backdrop-filter 900ms cubic-bezier(.22, .61, .36, 1);
-      will-change: opacity, background-color, box-shadow, backdrop-filter;
-    }
-
-    .top-nav {
+        @keyframes bounce {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(10px);
+          }
+        }
+    
+    .navbar {
       position: fixed;
       top: 0;
       right: 0;
-      width: 100%;       
+      z-index: 1050;
+      padding: 1rem;
+      pointer-events: none;
+      width: 100%;
     }
 
-    .top-nav .navbar {
-      background-color: white !important;
+    .navbar .navbar {
+      background-color: transparent !important;
       pointer-events: auto;
       padding: 0;
     }
 
-    .top-nav .navbar-toggler {
+    /* Keep hamburger in top-right */
+    .navbar .navbar-toggler {
       border: none;
       margin-left: auto;
     }
 
-  </style>
+    .navbar .navbar-toggler:focus {
+      box-shadow: none;
+    }
+
+    .navbar .navbar-toggler-icon {
+      background-image: none;
+      width: 1.5rem;
+      height: 1.5rem;
+      position: relative;
+    }
+
+    .navbar .navbar-toggler-icon::before,
+    .navbar .navbar-toggler-icon::after,
+    .navbar .navbar-toggler-icon span {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #ffffff; /* pure white */
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .navbar .navbar-toggler-icon::before {
+      top: 0;
+    }
+
+    .navbar .navbar-toggler-icon::after {
+      bottom: 0;
+    }
+
+    .navbar .navbar-toggler-icon span {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .navbar .navbar-collapse {
+      justify-content: center !important;
+      text-align: center;
+    }
+
+    .navbar .navbar-nav {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .navbar .navbar-collapse.collapse.show {
+      background-color: #ffffff;
+      border-radius: 0.25rem;
+      padding: 0.5rem 0;
+    }
+
+    .navbar .navbar-nav .nav-link {
+      color: #000000;
+    }
+
+    .navbar .navbar-nav .nav-link:hover {
+      color: #333333;
+    }
+
 </head>
 
 <body>
-  <!-- Transparent hamburger navigation fixed at top-right, centered menu -->
-  <div class="top-nav">
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    
+  <header id="carouselIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner position-fixed top-0 start-0 vw-100 vh-100 object-fit-cover">
+      <div class="carousel-item active">
+        <img src="/assets/images/1.jpg" class="d-block vw-100 vh-100 object-fit-cover" alt="Background-Image">
+      </div>
+      <div class="carousel-item">
+        <img src="/assets/images/2.jpg" class="d-block vw-100 vh-100 object-fit-cover" alt="Background-Image">
+      </div>
+      <div class="carousel-item">
+        <img src="/assets/images/4.jpg" class="d-block vw-100 vh-100 object-fit-cover" alt="Background-Image">
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
       <!-- Hamburger (always visible, top-right) -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
         aria-controls="mainNavbar" aria-expanded="false" aria-label="Navigation umschalten">
@@ -124,28 +182,7 @@
           </li>
         </ul>
       </div>
-    </nav>
-  </div>
-
-  <header id="carouselIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
-        aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner position-fixed top-0 start-0 vw-100 vh-100 object-fit-cover">
-      <div class="carousel-item active">
-        <img src="/assets/images/1.jpg" class="d-block vw-100 vh-100 object-fit-cover" alt="Background-Image">
-      </div>
-      <div class="carousel-item">
-        <img src="/assets/images/2.jpg" class="d-block vw-100 vh-100 object-fit-cover" alt="Background-Image">
-      </div>
-      <div class="carousel-item">
-        <img src="/assets/images/4.jpg" class="d-block vw-100 vh-100 object-fit-cover" alt="Background-Image">
-      </div>
-    </div>
-  </header>
+  </nav>
 
   <main class="container shadow p-0">
     {{ content }}
