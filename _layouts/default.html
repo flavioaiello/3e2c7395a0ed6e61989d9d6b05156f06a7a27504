@@ -83,8 +83,8 @@
       right: 0;
       z-index: 1050;
       padding: 1rem;
-      pointer-events: none;
-      width: 100%;
+      pointer-events: none; /* only the nav itself is clickable */
+      width: 100%;          /* allow centering across full width */
     }
 
     .top-nav .navbar {
@@ -103,37 +103,8 @@
       box-shadow: none;
     }
 
-    /* Make the hamburger icon clearly white */
     .top-nav .navbar-toggler-icon {
-      background-image: none;
-      width: 1.5rem;
-      height: 1.5rem;
-      position: relative;
-    }
-
-    .top-nav .navbar-toggler-icon::before,
-    .top-nav .navbar-toggler-icon::after,
-    .top-nav .navbar-toggler-icon span {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background-color: #ffffff; /* pure white */
-      box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-    }
-
-    .top-nav .navbar-toggler-icon::before {
-      top: 0;
-    }
-
-    .top-nav .navbar-toggler-icon::after {
-      bottom: 0;
-    }
-
-    .top-nav .navbar-toggler-icon span {
-      top: 50%;
-      transform: translateY(-50%);
+      filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.6));
     }
 
     /* Center menu items horizontally over the page */
@@ -147,19 +118,13 @@
       justify-content: center;
     }
 
-    /* White nav background when expanded (good for mobile) */
-    .top-nav .navbar-collapse.collapse.show {
-      background-color: #ffffff;
-      border-radius: 0.25rem;
-      padding: 0.5rem 0;
-    }
-
     .top-nav .navbar-nav .nav-link {
-      color: #000000;
+      color: #ffffff;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
     }
 
     .top-nav .navbar-nav .nav-link:hover {
-      color: #333333;
+      color: #f8f9fa;
     }
   </style>
 </head>
@@ -168,12 +133,10 @@
   <!-- Transparent hamburger navigation fixed at top-right, centered menu -->
   <div class="top-nav">
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <!-- Hamburger (always visible, top-right; icon white) -->
+      <!-- Hamburger (always visible, top-right) -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
         aria-controls="mainNavbar" aria-expanded="false" aria-label="Navigation umschalten">
-        <span class="navbar-toggler-icon">
-          <span></span>
-        </span>
+        <span class="navbar-toggler-icon"></span>
       </button>
 
       <!-- Menu centered horizontally when expanded -->
@@ -221,26 +184,6 @@
   </main>
 
   <script src="{{ site.assets.js }}" crossorigin="anonymous"></script>
-  <script>
-    // Collapse the navbar after clicking a link (mobile-friendly)
-    document.addEventListener('DOMContentLoaded', function () {
-      var navbarCollapse = document.getElementById('mainNavbar');
-      if (!navbarCollapse) return;
-
-      var navLinks = navbarCollapse.querySelectorAll('.nav-link');
-      navLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-          // Only collapse if it's currently shown
-          if (navbarCollapse.classList.contains('show')) {
-            var collapseInstance = bootstrap.Collapse.getInstance(navbarCollapse);
-            if (collapseInstance) {
-              collapseInstance.hide();
-            }
-          }
-        });
-      });
-    });
-  </script>
 </body>
 
 </html>
