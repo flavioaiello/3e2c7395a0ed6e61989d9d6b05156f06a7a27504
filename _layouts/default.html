@@ -76,19 +76,20 @@
       will-change: opacity, background-color, box-shadow, backdrop-filter;
     }
 
-    /* Transparent always-visible hamburger at top right */
+    /* Transparent always-visible navbar at top-right, content centered */
     .top-nav {
       position: fixed;
       top: 0;
       right: 0;
       z-index: 1050;
       padding: 1rem;
-      pointer-events: none; /* so clicks go only to the button */
+      pointer-events: none;
     }
 
     .top-nav .navbar {
       background-color: transparent !important;
       pointer-events: auto;
+      padding: 0;
     }
 
     .top-nav .navbar-toggler {
@@ -104,7 +105,13 @@
     }
 
     .top-nav .navbar-collapse {
-      text-align: right;
+      text-align: center;
+      justify-content: center !important;
+    }
+
+    .top-nav .navbar-nav {
+      width: 100%;
+      justify-content: center;
     }
 
     .top-nav .navbar-nav .nav-link {
@@ -115,28 +122,22 @@
     .top-nav .navbar-nav .nav-link:hover {
       color: #f8f9fa;
     }
-
-    /* On larger screens, show the menu items inline to the left of the hamburger (still keep the burger visible) */
-    @media (min-width: 992px) {
-      .top-nav .navbar-collapse {
-        display: flex !important;
-        justify-content: flex-end;
-      }
-    }
   </style>
 </head>
 
 <body>
-  <!-- Transparent hamburger navigation fixed at top right -->
+  <!-- Transparent hamburger navigation fixed at top right, items centered -->
   <div class="top-nav">
     <nav class="navbar navbar-expand-lg navbar-dark">
+      <!-- Hamburger stays at the far right -->
       <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
         aria-controls="mainNavbar" aria-expanded="false" aria-label="Navigation umschalten">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
-        <ul class="navbar-nav mb-2 mb-lg-0 gap-lg-3">
+      <!-- Centered menu items -->
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="#welcome">Willkommen</a>
           </li>
