@@ -76,56 +76,24 @@
       will-change: opacity, background-color, box-shadow, backdrop-filter;
     }
 
-    /* Transparent navbar fixed top-right, menu centered */
     .top-nav {
       position: fixed;
       top: 0;
       right: 0;
-      z-index: 1050;
-      padding: 1rem;
-      pointer-events: none; /* only the nav itself is clickable */
-      width: 100%;          /* allow centering across full width */
+      width: 100%;       
     }
 
     .top-nav .navbar {
-      background-color: transparent !important;
+      background-color: white !important;
       pointer-events: auto;
       padding: 0;
     }
 
-    /* Keep hamburger in top-right */
     .top-nav .navbar-toggler {
       border: none;
       margin-left: auto;
     }
 
-    .top-nav .navbar-toggler:focus {
-      box-shadow: none;
-    }
-
-    .top-nav .navbar-toggler-icon {
-      filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.6));
-    }
-
-    /* Center menu items horizontally over the page */
-    .top-nav .navbar-collapse {
-      justify-content: center !important;
-      text-align: center;
-    }
-
-    .top-nav .navbar-nav {
-      width: 100%;
-      justify-content: center;
-    }
-
-    .top-nav .navbar-nav .nav-link {
-      color: #ffffff;
-      text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-    }
-
-    .top-nav .navbar-nav .nav-link:hover {
-      color: #f8f9fa;
-    }
   </style>
 </head>
 
