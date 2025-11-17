@@ -51,14 +51,7 @@
         transform: translateY(10px);
       }
     }
-
-    :root {
-      --content-idle-opacity: 1;
-      --content-scroll-opacity: 0.8;
-      --content-transition: 900ms cubic-bezier(.22, .61, .36, 1);
-    }
-
-    /* Übergänge und Performance-Optimierung */
+    
     main.container,
     section.bg-white {
       transition:
@@ -69,7 +62,6 @@
       will-change: opacity, background-color, box-shadow, backdrop-filter;
     }
 
-    /* Standard-Zustand */
     main.container {
       opacity: var(--content-idle-opacity);
       background: rgba(255, 255, 255, 0.92);
@@ -151,29 +143,6 @@
   </main>
 
   <script src="{{ site.assets.js }}" crossorigin="anonymous"></script>
-  <script>
-    (function () {
-      let timer = null;
-
-      const setScrolling = () => {
-        document.body.classList.add('scrolling');
-        clearTimeout(timer);
-        // etwas längere Ruhezeit für sanftes Zurückblenden
-        timer = setTimeout(() => document.body.classList.remove('scrolling'), 450);
-      };
-
-      // Scroll-Events (passive für Performance)
-      window.addEventListener('scroll', setScrolling, { passive: true });
-      window.addEventListener('wheel', setScrolling, { passive: true });
-      window.addEventListener('touchmove', setScrolling, { passive: true });
-
-      // Auch Tastatur-Scroll-Events berücksichtigen
-      window.addEventListener('keydown', (e) => {
-        const keys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
-        if (keys.includes(e.key)) setScrolling();
-      });
-    })();
-  </script>
 </body>
 
 </html>
