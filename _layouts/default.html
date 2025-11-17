@@ -76,30 +76,26 @@
     </div>
   </header>
 
-  <nav class="navbar navbar-expand-lg navbar-dark">
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-        aria-controls="mainNavbar" aria-expanded="false" aria-label="Navigation umschalten">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Menu centered horizontally when expanded -->
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="#welcome">Willkommen</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#sponsoring">Sponsoring</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#gallery">Galerie</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Kontakt</a>
-          </li>
-        </ul>
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#welcome">Willkommen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#sponsoring">Sponsoring</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#gallery">Galerie</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Kontakt</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 
   <main class="container shadow p-0">
@@ -107,6 +103,21 @@
   </main>
 
   <script src="{{ site.assets.js }}" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+      var navbarCollapse = document.querySelector('.navbar-collapse');
+  
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (navbarCollapse.classList.contains('show')) {
+            var bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+            bsCollapse.hide();
+          }
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>
