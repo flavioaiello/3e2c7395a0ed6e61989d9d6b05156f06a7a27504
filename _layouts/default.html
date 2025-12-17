@@ -36,6 +36,10 @@
         scroll-snap-align: start;
     }
 
+    .navbar {
+        margin-bottom: 0 !important;
+    }
+
     @keyframes fadeIn {
         to {
             opacity: 1;
@@ -80,7 +84,7 @@
   </header>
   
   <main class="container shadow p-0">
-    <nav class="navbar bg-light sticky-top border-0 p-0">
+    <nav class="navbar bg-light sticky-top border-0 p-0 mb-0">
       <div class="container-fluid justify-content-center px-0">
         <ul class="navbar-nav flex-row gap-4 mx-auto">
           {% for item in site.navigation %}
